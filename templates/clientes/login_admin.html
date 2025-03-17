@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Administrador</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/style_cadastrar.css' %}">
+    <link rel="stylesheet" href="{% static 'clientes/css/style_login.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Login de Administrador</h1>
+        
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="alert alert-danger">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-login">Entrar</button>
+        </form>
+
+        <a href="{% url 'cadastrar_administrador' %}" class="btn btn-cadastrar">Criar Novo Administrador</a>
+        <a href="{% url 'home' %}" class="btn btn-voltar">Voltar</a>
+        <a href="{% url 'listar_administradores' %}" class="btn btn-login">Listar Administradores</a>
+    </div>
+
+</body>
+</html>

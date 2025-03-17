@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem vindo ao protótipo de cadastro</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/style_cadastrar.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Área do cliente</h1>
+
+        <p> Aqui haverá a possibilidade de interações com o cliente, como pagamentos e seviços. </p>
+
+        <a href="{% url 'home' %}" class="btn btn-voltar">Voltar para home</a>
+
+    </div>
+
+    <!-- <script src="{% static 'clientes/js/script.js' %}"></script> -->
+</body>
+</html>

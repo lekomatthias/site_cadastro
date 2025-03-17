@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto; /* Centraliza o container e adiciona margem superior e inferior */
+    background: white;
+    padding: 20px; /* Padding interno do container */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px; /* Margem inferior para o título */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os elementos do formulário */
+}
+
+label {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px; /* Margem inferior para os labels */
+}
+
+input {
+    width: calc(100% - 20px); /* Ajusta a largura para respeitar o padding do container */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0; /* Remove margens padrão do input */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px 0; /* Margem superior e inferior para os botões */
+}
+
+.btn-cadastrar {
+    background-color: #007bff;
+}
+
+.btn-voltar {
+    background-color: #6c757d;
+    margin-top: 10px; /* Margem superior para o botão "Voltar" */
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px; /* Ajusta a margem superior para mensagens de erro */
+    margin-bottom: 10px; /* Margem inferior para mensagens de erro */
+}
+
+.invalid {
+    border-color: red;
+}

@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Cliente</title>
+    <!-- Conectando ao CSS da página de cadastro -->
+    <link rel="stylesheet" href="{% static 'clientes/css/style_cadastrar.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Modificar Cliente</h1>
+        <form id="cadastroForm" method="POST" onsubmit="return validarFormulario(event)">
+            {% csrf_token %}
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" value="{{ cliente.nome }}" required>
+            <div id="errorNome" class="error"></div>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" id="cpf" value="{{ cliente.cpf }}" required oninput="formatarCPF(this)">
+            <div id="errorCpf" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ cliente.email }}" required>
+            <div id="errorEmail" class="error"></div>
+
+            <label for="celular">Celular:</label>
+            <input type="text" name="celular" id="celular" value="{{ cliente.celular }}" required oninput="formatarTelefone(this)">
+            <div id="errorCelular" class="error"></div>
+
+            <button type="submit" class="btn btn-cadastrar">Salvar Alterações</button>
+        </form>
+
+        <a href="{% url 'listar_clientes' %}" class="btn btn-voltar">Voltar</a>
+    </div>
+
+    <!-- Conectando ao JavaScript da página de cadastro -->
+    <script src="{% static 'clientes/js/data_validation.js' %}"></script>
+    <script>
+        // Aplica a formatação inicial ao carregar a página
+        document.addEventListener("DOMContentLoaded", function () {
+            const cpf = document.getElementById("cpf"); // Seleciona o campo CPF
+            formatarCPF(cpf);
+        });
+
+        // Aplica a formatação inicial ao carregar a página
+        document.addEventListener("DOMContentLoaded", function () {
+            const telefone = document.getElementById("celular");
+            formatarTelefone(telefone);
+        });
+    </script>
+</body>
+</html>

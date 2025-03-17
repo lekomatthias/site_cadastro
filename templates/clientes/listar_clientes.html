@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{% static 'clientes/css/style_listar.css' %}"> <!-- Link para o arquivo CSS -->
+</head>
+<body>
+
+    <div class="container">
+        <h1>Clientes Cadastrados</h1>
+
+        <a href="{% url 'cadastrar_cliente' %}" class="btn btn-cadastrar">Cadastrar Novo Cliente</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Celular</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nome }}</td>
+                    <td class="cpf">{{ cliente.cpf }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td class="telefone">{{ cliente.celular }}</td>
+                    <td class="actions">
+                        <a href="{% url 'modificar_cliente' cliente.id %}" class="btn btn-modificar">Modificar</a>
+                        <form method="POST" action="{% url 'apagar_cliente' cliente.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-apagar" onclick="return confirm('Tem certeza que deseja apagar este cliente?')">Apagar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'home' %}" class="btn btn-voltar">Voltar para home</a>
+        <a href="{% url 'listar_administradores' %}" class="btn btn-modificar">Listar Administradores</a>
+    </div>
+    <script src="{% static 'clientes/js/show_format.js' %}"></script>
+    <script>
+        // Formata os CPFs na página após o carregamento
+        document.addEventListener("DOMContentLoaded", function () {
+            const cpfFields = document.querySelectorAll(".cpf"); // Seleciona todos os campos com a classe "cpf"
+            cpfFields.forEach(function (field) {
+                const cpf = field.textContent.trim(); // Obtém o valor do CPF
+                field.textContent = formatarCPFTexto(cpf); // Aplica a formatação
+            });
+        });
+        // Formata os telefones na página após o carregamento
+        document.addEventListener("DOMContentLoaded", function () {
+            const telefoneFields = document.querySelectorAll(".telefone"); // Seleciona todos os campos com a classe "telefone"
+            telefoneFields.forEach(function (field) {
+                const telefone = field.textContent.trim(); // Obtém o valor do telefone
+                field.textContent = formatarTelefoneTexto(telefone); // Aplica a formatação
+            });
+        });
+    </script>
+</body>
+</html>
