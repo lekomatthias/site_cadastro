@@ -29,9 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '*'] # falha de segurança aqui por permitir qlqr host
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8080',
-    'https://george-comply-ai-stones.trycloudflare.com',
-    # posso colocar qlqr outro endereço aqui para permitir o acesso externo
 ]
 
 # Application definition
